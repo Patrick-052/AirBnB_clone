@@ -3,7 +3,7 @@
 
 from uuid import uuid4
 from datetime import datetime
-
+from .__init__ import storage
 
 class BaseModel:
     """Base class """
@@ -21,6 +21,7 @@ class BaseModel:
                     setattr(self, key, value)
             self.created_at = datetime.fromisoformat(self.created_at)
             self.updated_at = datetime.fromisoformat(self.updated_at)
+        storage.new(self)
 
     def __str__(self):
         """Print a description of the class instance """
@@ -29,6 +30,7 @@ class BaseModel:
     def save(self):
         """Update ``updated_at`` with the current datetime """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary description of the instance """
