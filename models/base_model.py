@@ -11,6 +11,10 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Constructor method """
 
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
         if kwargs:
             for key, value in kwargs.items():
                 if hasattr(self, key) and key != '__class__':
@@ -18,9 +22,6 @@ class BaseModel:
             self.created_at = datetime.fromisoformat(self.created_at)
             self.updated_at = datetime.fromisoformat(self.updated_at)
         else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def __str__(self):
@@ -36,6 +37,9 @@ class BaseModel:
         """Returns a dictionary description of the instance """
         my_dict = self.__dict__
         my_dict['__class__'] = 'BaseModel'
-        my_dict['created_at'] = self.created_at.isoformat()
-        my_dict['updated_at'] = self.updated_at.isoformat()
+        for key, value in my_dict.items():
+            if isinstance(value, datetime):
+                my_dict[key] = value.isoformat()
+        #my_dict['created_at'] = self.created_at.isoformat()
+        #my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict
