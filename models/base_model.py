@@ -8,11 +8,19 @@ from datetime import datetime
 class BaseModel:
     """Base class """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Constructor method """
+
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+
+        if kwargs:
+            for key, value in kwargs.items():
+                if hasattr(self, key) and key != '__class__':
+                    setattr(self, key, value)
+            self.created_at = datetime.fromisoformat(self.created_at)
+            self.updated_at = datetime.fromisoformat(self.updated_at)
 
     def __str__(self):
         """Print a description of the class instance """
