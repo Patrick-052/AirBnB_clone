@@ -12,35 +12,35 @@ class FileStorage:
     __objects = dict()
 
     def all(self):
-        """Return ``FileStorage.__objects`` """
-        return FileStorage.__objects
+        """Return ``self.__objects`` """
+        return self.__objects
 
     def new(self, obj):
         """Set in __objects the obj with key <obj class name>.id """
         obj_dict = obj.to_dict()
         obj_class_name = obj_dict['__class__']
         key = obj_class_name + '.' + obj.id
-        FileStorage.__objects[key] = obj
+        self.__objects[key] = obj
 
     def save(self):
         """Serialize ``__objects`` to the JSON file (path: ``__file_path``) """
-        pre_json_dict = {}
-        for key, value in FileStorage.__objects.items():
-            pre_json_dict[key] = value.to_dict()
+        src = {}
+        for key, value in self.__objects.items():
+            src[key] = value.to_dict()
 
-        with open(FileStorage.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(pre_json_dict, f)
+        with open(self.__file_path, 'w', encoding='utf-8') as f:
+            json.dump(src, f)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
         try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                post_json_dict = json.load(f)
+            with open(self.__file_path, 'r', encoding='utf-8') as f:
+                dest = json.load(f)
 
-            for key in post_json_dict:
+            for key in dest:
                 class_name, class_id = key.split('.')
                 new_obj = eval(class_name)
-                FileStorage.__objects[key] = new_obj(**post_json_dict[key])
+                self.__objects[key] = new_obj(**dest[key])
 
         except FileNotFoundError:
             pass
