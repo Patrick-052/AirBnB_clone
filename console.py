@@ -24,6 +24,7 @@ class HBNBCommand(cmd.Cmd):
         return self.do_EOF()
 
     def do_create(self, line=''):
+        """Create and save a new class instance """
         arg = line.split()
         if len(arg) == 0:
             print("** class name missing **")
@@ -39,11 +40,6 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
                 print(obj.id)
 
-    #def do_show(self, arg):
-    #def de_destroy(self, arg):
-    #def do_all(self, arg):
-    #def do_update(self, arg):
-    
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
