@@ -1,10 +1,16 @@
 #!/usr/bin/python3
+"""Define class 'HBNBCommand' """
 
 import cmd
 
+class HBNBCommand(cmd.Cmd):
+    """creates console with the following commands"""
 
-class Console(cmd.Cmd):
     cmd.Cmd.prompt = "(hbnb) "
+
+    def emptyline(self):
+        'executes no command'
+        pass
 
     def do_EOF(self, line=''):
         'Exit program'
@@ -17,4 +23,4 @@ class Console(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    Console().cmdloop()
+    HBNBCommand().cmdloop()
