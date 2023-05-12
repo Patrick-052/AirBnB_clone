@@ -26,6 +26,10 @@ class BaseModel:
 
     def __str__(self):
         """Print a description of the class instance """
+        if isinstance(self.created_at, str):
+            self.created_at = datetime.fromisoformat(self.created_at)
+        if isinstance(self.updated_at, str):
+            self.updated_at = datetime.fromisoformat(self.updated_at)
         temp = self.__dict__
         #temp['created_at'] = datetime.fromisoformat(temp['created_at'])
         #temp['updated_at'] = datetime.fromisoformat(temp['updated_at'])
@@ -39,6 +43,10 @@ class BaseModel:
         """Return a dictionary description of the instance """
         my_dict = self.__dict__
         my_dict['__class__'] = self.cls_name()
+        if isinstance(self.created_at, str):
+            self.created_at = datetime.fromisoformat(self.created_at)
+        if isinstance(self.updated_at, str):
+            self.updated_at = datetime.fromisoformat(self.updated_at)
         my_dict['created_at'] = self.created_at.isoformat()
         my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict

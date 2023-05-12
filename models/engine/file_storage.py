@@ -17,20 +17,23 @@ class FileStorage:
 
     def new(self, obj):
         """Set in __objects the obj with key <obj class name>.id """
-        obj_dict = obj.to_dict()
-        obj_class_name = obj_dict['__class__']
-        key = obj_class_name + '.' + obj.id
-        self.__objects[key] = obj_dict
+        key = obj.__class__.__name__ + '.' + obj.id
+        self.__objects[key] = obj
 
     def save(self):
         """Serialize ``__objects`` to the JSON file (path: ``__file_path``) """
+        src = self.__objects.copy()
+        for key in src:
+            src[key] = src[key].to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(self.__objects, f)
+            json.dump(src, f)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
-                self.__objects = json.load(f)
+                dest = json.load(f)
+            for key in dest:
+                self.__objects[key] = eval(key.split('.')[0])(dest[key])
         except FileNotFoundError:
             pass
