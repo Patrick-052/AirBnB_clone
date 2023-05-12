@@ -17,29 +17,33 @@ class BaseModel:
 
         if kwargs:
             for key, value in kwargs.items():
-                if hasattr(self, key) and key != '__class__':
+                if key == 'created_at' or key == 'updated_at':
+                    setattr(self, key, datetime.fromisoformat(value))
+                elif key != '__class__':
                     setattr(self, key, value)
-            self.created_at = datetime.fromisoformat(self.created_at)
-            self.updated_at = datetime.fromisoformat(self.updated_at)
         else:
             models.storage.new(self)
 
     def __str__(self):
         """Print a description of the class instance """
-        return f'[BaseModel] ({self.id}) {self.__dict__}'
+        temp = self.__dict__
+        #temp['created_at'] = datetime.fromisoformat(temp['created_at'])
+        #temp['updated_at'] = datetime.fromisoformat(temp['updated_at'])
+        return f'[{self.cls_name()}] ({self.id}) {temp}'
 
     def save(self):
         """Update ``updated_at`` with the current datetime """
-        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary description of the instance """
+        """Return a dictionary description of the instance """
         my_dict = self.__dict__
-        my_dict['__class__'] = 'BaseModel'
-        for key, value in my_dict.items():
-            if isinstance(value, datetime):
-                my_dict[key] = value.isoformat()
-        #my_dict['created_at'] = self.created_at.isoformat()
-        #my_dict['updated_at'] = self.updated_at.isoformat()
+        my_dict['__class__'] = self.cls_name()
+        my_dict['created_at'] = self.created_at.isoformat()
+        my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict
+
+    @classmethod
+    def cls_name(cls):
+        """Return an instance's class name """
+        return cls.__name__
