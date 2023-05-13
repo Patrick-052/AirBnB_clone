@@ -29,7 +29,7 @@ class FileStorage:
         for key in src:
             src[key] = src[key].to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(src, f, indent=4)
+            json.dump(src, f)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
