@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """instatiation of public class attributes"""
+    """Instantiation of public class attributes"""
 
     email = ''
     password = ''
