@@ -99,14 +99,19 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name"""
 
         args = line.split()
+        all_list = []
+        obj_dict = models.storage.all()
         if args and args[0] not in self.__class_list:
             print("** class doesn't exist **")
-        else:
-            obj_dict = models.storage.all()
-            all_list = []
+            return
+        elif not args:
             for key, value in obj_dict.items():
                 all_list.append(value.__str__())
-            print(all_list)
+        else:
+            for key, value in obj_dict.items():
+                if key.split('.')[0] == args[0]:
+                    all_list.append(value.__str__())
+        print(all_list)
 
     def do_update(self, line=''):
         """Updates an instance based on the class name
