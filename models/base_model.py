@@ -32,8 +32,6 @@ class BaseModel:
         if isinstance(self.updated_at, str):
             self.updated_at = datetime.fromisoformat(self.updated_at)
         temp = self.__dict__
-        #temp['created_at'] = datetime.fromisoformat(temp['created_at'])
-        #temp['updated_at'] = datetime.fromisoformat(temp['updated_at'])
         return f'[{self.cls_name()}] ({self.id}){temp}'
 
     def save(self):

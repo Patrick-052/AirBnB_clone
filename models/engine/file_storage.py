@@ -33,9 +33,10 @@ class FileStorage:
         """Deserialize JSON file to ``__objects`` if file exists """
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
-                dest = json.load(f)
-            for key in dest:
-                #del dest[key]['__class__']
-                self.__objects[key] = eval(key.split('.')[0])(dest[key])
+                objdict = json.load(f)
+            for o in objdict.values():
+                cls_name = o["__class__"]
+                del o["__class__"]
+                self.new(eval(cls_name)(**o))
         except FileNotFoundError:
-            pass
+            return
