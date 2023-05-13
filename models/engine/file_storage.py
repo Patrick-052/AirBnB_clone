@@ -2,8 +2,13 @@
 """Defines class ``FileStorage`` """
 
 import json
-from models.base_model import BaseModel
 import copy
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 
 
@@ -29,7 +34,7 @@ class FileStorage:
         for key in src:
             src[key] = src[key].to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(src, f)
+            json.dump(src, f, indent=4)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
