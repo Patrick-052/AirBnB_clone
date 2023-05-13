@@ -3,10 +3,11 @@
 
 import json
 from models.base_model import BaseModel
-
+import copy
 
 class FileStorage:
-    """Serialize instances to a JSON file and deserialize JSON file to instances """
+    """Serialize instances to a JSON file and
+    deserialize JSON file to instances """
 
     __file_path = 'file.json'
     __objects = dict()
@@ -22,11 +23,11 @@ class FileStorage:
 
     def save(self):
         """Serialize ``__objects`` to the JSON file (path: ``__file_path``) """
-        src = self.__objects.copy()
+        src = copy.deepcopy(self.__objects)
         for key in src:
             src[key] = src[key].to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(src, f)
+            json.dump(src, f, indent=4)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
@@ -34,6 +35,7 @@ class FileStorage:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 dest = json.load(f)
             for key in dest:
+                #del dest[key]['__class__']
                 self.__objects[key] = eval(key.split('.')[0])(dest[key])
         except FileNotFoundError:
             pass

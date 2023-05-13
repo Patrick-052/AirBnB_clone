@@ -5,6 +5,7 @@ import models
 from uuid import uuid4
 from datetime import datetime
 
+
 class BaseModel:
     """Base class """
 
@@ -33,10 +34,11 @@ class BaseModel:
         temp = self.__dict__
         #temp['created_at'] = datetime.fromisoformat(temp['created_at'])
         #temp['updated_at'] = datetime.fromisoformat(temp['updated_at'])
-        return f'[{self.cls_name()}] ({self.id}) {temp}'
+        return f'[{self.cls_name()}] ({self.id}){temp}'
 
     def save(self):
         """Update ``updated_at`` with the current datetime """
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
