@@ -126,12 +126,9 @@ class HBNBCommand(cmd.Cmd):
         elif "{}.{}".format(args[0], args[1]) not in obj_dict.keys():
             print("** no instance found **")
         else:
-            try:
-                key = args[1] + '.' + args[2]
-                obj_dict[key].args[2] = args[3]
-            except Exception as e:
-                print(f"{type(e).__name__}: {e}")
-                print(args)
+            key = '.'.join(args[:2])
+            setattr(obj_dict[key], args[2], args[3])
+            models.storage.save()
 
 
 if __name__ == '__main__':
