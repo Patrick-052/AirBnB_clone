@@ -32,7 +32,7 @@ class BaseModel:
         if isinstance(self.updated_at, str):
             self.updated_at = datetime.fromisoformat(self.updated_at)
         temp = self.__dict__
-        return f'[{self.cls_name()}] ({self.id}){temp}'
+        return f'[{self.cls_name()}] ({self.id}) {temp}'
 
     def save(self):
         """Update ``updated_at`` with the current datetime """

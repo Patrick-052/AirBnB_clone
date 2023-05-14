@@ -5,6 +5,6 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Amenity """
+    """Defines Amenity object"""
 
     name = ''

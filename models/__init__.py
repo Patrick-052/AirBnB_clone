@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""__init__"""
+"""Reloads class objects from file.json"""
 
 from models.engine.file_storage import FileStorage
 
