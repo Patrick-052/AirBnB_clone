@@ -2,7 +2,6 @@
 """Defines class ``FileStorage`` """
 
 import json
-import copy
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
@@ -10,6 +9,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+# from copy import deepcopy
 
 
 class FileStorage:
@@ -30,20 +30,19 @@ class FileStorage:
 
     def save(self):
         """Serialize ``__objects`` to the JSON file (path: ``__file_path``) """
-        src = copy.deepcopy(self.__objects)
-        for key in src:
-            src[key] = src[key].to_dict()
+        src = dict()
+        for key, value in self.all().items():
+            src[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(src, f)
+            json.dump(src, f, indent=4)
 
     def reload(self):
         """Deserialize JSON file to ``__objects`` if file exists """
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
-                objdict = json.load(f)
-            for o in objdict.values():
-                cls_name = o["__class__"]
-                del o["__class__"]
-                self.new(eval(cls_name)(**o))
+                obj_dict = json.load(f)
+            for value in obj_dict.values():
+                cls_name = value["__class__"]
+                self.new(eval(cls_name)(**value))
         except FileNotFoundError:
             return
