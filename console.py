@@ -38,13 +38,10 @@ class HBNBCommand(cmd.Cmd):
         arg = line.split()
         if len(arg) == 0:
             print("** class name missing **")
-            print(arg)
         else:
             cls_name = arg[0]
             if cls_name not in self.__class_list:
                 print("** class doesn't exist **")
-                print(cls_name)
-                print(self.__class_list)
             else:
                 try:
                     obj = eval(cls_name)()
