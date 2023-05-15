@@ -16,13 +16,13 @@ class TestFileStorage(unittest.TestCase):
 
     def test_fs_has_attr(self):
         """TestCase for presence of attribute"""
-        self.assertTrue(hasattr(FileStorage, '__file_path'))
-        self.assertTrue(hasattr(FileStorage, '__objects'))
+        self.assertTrue(hasattr(FileStorage, '_FileStorage__file_path'))
+        self.assertTrue(hasattr(FileStorage, '_FileStorage__objects'))
 
     def test_fs_attr_type(self):
         """TestCase for checking the identity of attribute"""
-        self.assertIsInstance(self.fs.__file_path, str)
-        self.assertIsInstance(self.fs.__objects, dict)
+        self.assertIsInstance(self.fs._FileStorage__file_path, str)
+        self.assertIsInstance(self.fs._FileStorage__objects, dict)
 
     def test_new(self):
         """TestCase for creating a new object"""

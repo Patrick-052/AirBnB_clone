@@ -26,9 +26,9 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """TestCase for string represenation"""
-        string = f'[BaseModel] ({self.bm.id}){self.bm.__dict__}'
+        string = f'[BaseModel] ({self.bm.id}) {self.bm.__dict__}'
         self.assertEqual(str(self.bm), string)
-        string_kw = f'[BaseModel] ({self.bm_kw.id}){self.bm_kw.__dict__}'
+        string_kw = f'[BaseModel] ({self.bm_kw.id}) {self.bm_kw.__dict__}'
         self.assertEqual(str(self.bm_kw), string_kw)
 
     def test_save(self):
