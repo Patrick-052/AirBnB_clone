@@ -4,7 +4,6 @@
 import models
 from uuid import uuid4
 from datetime import datetime
-from copy import deepcopy
 
 
 class BaseModel:
@@ -27,10 +26,6 @@ class BaseModel:
     def __str__(self):
         """Print a description of the class instance """
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
-        # if isinstance(self.created_at, str):
-        #     self.created_at = datetime.fromisoformat(self.created_at)
-        # if isinstance(self.updated_at, str):
-        #     self.updated_at = datetime.fromisoformat(self.updated_at)
 
     def save(self):
         """Update ``updated_at`` with the current datetime """
@@ -47,13 +42,3 @@ class BaseModel:
                 my_dict[key] = value
         my_dict['__class__'] = self.__class__.__name__
         return my_dict
-
-        # my_dict = deepcopy(self.__dict__)
-        # my_dict['__class__'] = self.__class__.__name__
-        # my_dict['created_at'] = self.created_at.isoformat()
-        # my_dict['updated_at'] = self.updated_at.isoformat()
-        # return my_dict
-        # if isinstance(self.created_at, str):
-        #     self.created_at = datetime.fromisoformat(self.created_at)
-        # if isinstance(self.updated_at, str):
-        #     self.updated_at = datetime.fromisoformat(self.updated_at)
