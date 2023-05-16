@@ -5,7 +5,18 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Define City object"""
+    """
+    Defines City object
+
+    ...
+
+    Class Attributes
+    ----------------
+    state_id (str):
+        Refers to ``State.id``
+    name (str)
+
+    """
 
     state_id = ''
     name = ''
