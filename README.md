@@ -81,7 +81,7 @@ Organisation is as follows:
 
 	```
 	.
-	├── [AUTHORS](AUTHORS)
+	├── [AUTHORS](https://github.com/Kemboiray/AirBnB_clone/blob/main/AUTHORS)
 	├── [LICENSE](LICENSE)
 	├── [README.md](README.md)
 	├── [console.py](console.py)
