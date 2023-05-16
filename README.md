@@ -79,7 +79,6 @@ The interpreter works as follows:
 ## Project Structure
 Organisation is as follows:
 
-	```
 	.
 	├── AUTHORS
 	├── LICENSE
@@ -87,9 +86,9 @@ Organisation is as follows:
 	├── console.py
 	├── hack
 	│   └── generate-authors.sh
-	├── models
+	├── [models](models)
 	│   ├── __init__.py
-	│   ├── amenity.py
+	│   ├── [amenity.py](models/amenity.py)
 	│   ├── base_model.py
 	│   ├── city.py
 	│   ├── engine
@@ -113,7 +112,6 @@ Organisation is as follows:
 			├── test_review.py
 			├── test_state.py
 			└── test_user.py
-	```
 
 ---
 ## Contributors
