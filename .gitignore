@@ -1,4 +1,6 @@
 __pycache__/
-checker_tests/
+3-test*
+4-test*
+5-test*
 file.json
 
