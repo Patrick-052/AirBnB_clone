@@ -1,10 +1,18 @@
 #!/usr/bin/python3
-"""Defines ``BaseModel`` subclass, ``state`` """
+"""Defines ``BaseModel`` subclass, ``State`` """
 
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """Defines State object"""
+    """
+    Defines State object
+
+    ...
+
+    Class Attributes
+    ----------------
+    name(str)
+    """
 
     name = ''
