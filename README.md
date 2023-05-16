@@ -4,8 +4,8 @@
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Phase One](#phase-one)
-  * [The Command Interpreter](#the-command-interpreter)
-    * [Usage](#usage)
+  - [The Command Interpreter](#the-command-interpreter)
+    - [Usage](#usage)
 4. [Project Structure](#project-structure)
 6. [Contributors](#contributors)
 7. [License](#license)
@@ -14,15 +14,16 @@
 The goal of this project is to deploy on a server a simple copy of the [AirBnB website](https://www.airbnb.com/).
 
 Features will be implemented in phases, and the final application will comprise:
-	* A command interpreter to manipulate data without a visual interface
-	* A website (front-end)
-	* A database or file that stores objects
-	* An API for communication between the front end and the database
+  * A command interpreter to manipulate data without a visual interface
+  * A website (front-end)
+  * A database or file that stores objects
+  * An API for communication between the front end and the database
 
 ---
 ## Phase One
 This phase involved building the command interpreter. Its description follows.
 
+---
 ### The Command Interpreter
 The command interpreter provides a command-line interface for managing project
 components. Its functionality includes:
@@ -31,6 +32,7 @@ components. Its functionality includes:
   * Listing object instances
   * Destroying object instances
 
+---
 #### Usage
 The interpreter works as follows:
   * In interactive mode:
@@ -77,7 +79,7 @@ The interpreter works as follows:
 ## Project Structure
 Organisation is as follows:
 
-	```
+	```bash
 	.
 	├── AUTHORS
 	├── LICENSE
