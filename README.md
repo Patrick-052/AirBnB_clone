@@ -79,26 +79,26 @@ The interpreter works as follows:
 ## Project Structure
 Organisation is as follows:
 
-	```bash
+	```
 	.
-	├── AUTHORS
-	├── LICENSE
-	├── README.md
-	├── console.py
-	├── hack
-	│   └── generate-authors.sh
-	├── models
-	│   ├── __init__.py
-	│   ├── amenity.py
-	│   ├── base_model.py
-	│   ├── city.py
-	│   ├── engine
-	│   │   ├── __init__.py
-	│   │   └── file_storage.py
-	│   ├── place.py
-	│   ├── review.py
-	│   ├── state.py
-	│   └── user.py
+	├── [AUTHORS](AUTHORS)
+	├── [LICENSE](LICENSE)
+	├── [README.md](README.md)
+	├── [console.py](console.py)
+	├── [hack](hack)
+	│   └── [generate-authors.sh](hack/generate-authors.sh)
+	├── [models](models)
+	│   ├── [__init__.py](models/__init__.py)
+	│   ├── [amenity.py](models/amenity.py)
+	│   ├── [base_model.py](models/base_model.py)
+	│   ├── [city.py](models/city.py)
+	│   ├── [engine](models/engine)
+	│   │   ├── [__init__.py](models/engine/__init__.py)
+	│   │   └── [file_storage.py](models/engine/file_storage.py)
+	│   ├── [place.py](models/place.py)
+	│   ├── [review.py](models/review.py)
+	│   ├── [state.py](models/state.py)
+	│   └── [user.py](models/user.py)
 	└── tests
 		├── __init__.py
 		└── test_models
