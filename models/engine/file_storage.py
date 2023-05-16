@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines storage class ``FileStorage`` """
+"""Defines class ``FileStorage`` """
 
 import json
 from models.base_model import BaseModel
@@ -12,23 +12,8 @@ from models.user import User
 
 
 class FileStorage:
-    """
-    Maintains a dictionary of class instances.
-
-    Records new class instances into the objects dictionary
-
-    Saves the objects dictionary into a file for retrieval
-    when the application is launched
-
-    ...
-
-    Attributes
-    ----------
-    __file_path (str):
-        path to storage file (JSON file)
-    __objects (dict):
-        stores all objects by ``<object_class_name.object_id>``
-    """
+    """Serialize instances to a JSON file and
+    deserialize JSON file to instances """
 
     __file_path = 'file.json'
     __objects = dict()
@@ -38,22 +23,20 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """Set in ``__objects`` the object(``obj``) with key
-        ``<obj_class_name>.id`` """
+        """Set in __objects the obj with key <obj class name>.id """
         key = obj.__class__.__name__ + '.' + obj.id
         self.__objects[key] = obj
 
     def save(self):
-        """Serialize ``__objects`` to ``__file_path`` """
+        """Serialize ``__objects`` to the JSON file (path: ``__file_path``) """
         src = dict()
         for key, value in self.all().items():
             src[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(src, f)
+            json.dump(src, f, indent=4)
 
     def reload(self):
-        """Deserialize ``__file_path`` to ``__objects`` if the storage file
-        exists """
+        """Deserialize JSON file to ``__objects`` if file exists """
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 obj_dict = json.load(f)

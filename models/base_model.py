@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a base class ``BaseModel`` """
+"""Defines class ``BaseModel`` """
 
 import models
 from uuid import uuid4
@@ -7,23 +7,7 @@ from datetime import datetime
 
 
 class BaseModel:
-    """
-    Defines common attributes and methods for other classes in the application
-
-    ...
-
-    Class Attributes
-    ----------------
-    id (str):
-        unique identifier for a class instance
-    created_at (datetime):
-        refers to the time an instance was created
-    updated_at (datetime):
-        refers to the time an instance was updated
-
-    Additional attributes may be set based on the ``kwargs`` parameter of the
-    constructor method
-    """
+    """Base class """
 
     def __init__(self, *args, **kwargs):
         """Constructor method """
@@ -40,16 +24,16 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """Print a description of a ``BaseModel`` instance """
+        """Print a description of the class instance """
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
 
     def save(self):
-        """Save changes made to a ``BaseModel`` instance """
+        """Update ``updated_at`` with the current datetime """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Return a dictionary description of a ``BaseModel`` instance """
+        """Return a dictionary description of the instance """
         my_dict = dict()
         for key, value in self.__dict__.items():
             if key in ('created_at', 'updated_at'):
