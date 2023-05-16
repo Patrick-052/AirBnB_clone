@@ -79,39 +79,39 @@ The interpreter works as follows:
 ## Project Structure
 Organisation is as follows:
 
-	.
-	├── AUTHORS
-	├── LICENSE
-	├── README.md
-	├── console.py
-	├── hack
-	│   └── generate-authors.sh
-	├── [models](models)
-	│   ├── __init__.py
-	│   ├── [amenity.py](models/amenity.py)
-	│   ├── base_model.py
-	│   ├── city.py
-	│   ├── engine
-	│   │   ├── __init__.py
-	│   │   └── file_storage.py
-	│   ├── place.py
-	│   ├── review.py
-	│   ├── state.py
-	│   └── user.py
-	└── tests
+.
+├── AUTHORS
+├── LICENSE
+├── README.md
+├── console.py
+├── hack
+│   └── generate-authors.sh
+├── [models](models)
+│   ├── __init__.py
+│   ├── [amenity.py](models/amenity.py)
+│   ├── base_model.py
+│   ├── city.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   └── file_storage.py
+│   ├── place.py
+│   ├── review.py
+│   ├── state.py
+│   └── user.py
+└── tests
+	├── __init__.py
+	└── test_models
 		├── __init__.py
-		└── test_models
-			├── __init__.py
-			├── test_amenity.py
-			├── test_base_model.py
-			├── test_city.py
-			├── test_engine
-			│   ├── __init__.py
-			│   └── test_file_storage.py
-			├── test_place.py
-			├── test_review.py
-			├── test_state.py
-			└── test_user.py
+		├── test_amenity.py
+		├── test_base_model.py
+		├── test_city.py
+		├── test_engine
+		│   ├── __init__.py
+		│   └── test_file_storage.py
+		├── test_place.py
+		├── test_review.py
+		├── test_state.py
+		└── test_user.py
 
 ---
 ## Contributors
