@@ -4,8 +4,8 @@
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Phase One](#phase-one)
-  * [The Command Interpreter](#the-command-interpreter)
-    - [Usage](#usage)
+   * [The Command Interpreter](#the-command-interpreter)
+     - [Usage](#usage)
 4. [Project Structure](#project-structure)
 6. [Contributors](#contributors)
 7. [License](#license)
@@ -115,7 +115,7 @@ Organisation is as follows:
 
 ---
 ## Contributors
-This project was written by [Patrick-052](https://github.com/Patrick-052) and [Kemboiray](https://github.com/Kemboiray).
+This project was written by [Patrick-052](https://github.com/Patrick-052) and [Kemboiray](https://github.com/Kemboiray). See the [AUTHORS](AUTHORS) file.
 
 ---
 ## License
