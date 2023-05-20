@@ -26,7 +26,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """TestCase for creating a new object"""
-        pass
+        return
         # obj = BaseModel()
         # self.fs.new(obj)
         # self.assertTrue(('BaseModel'+ '.' + obj.id, obj)
@@ -34,7 +34,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         """TestCase for asving objects to json"""
-        pass
+        return
         # self.fs.attr1 = 'Today'
         # self.fs.save()
         # with open(self.fs.FileStorage().__file_path, 'r') as f:
@@ -44,11 +44,11 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         """TestCase for uploading objects from json"""
-        pass
+        return
 
     def test_all(self):
         """TestCase for returning a dictionary"""
-        pass
+        return
 
 
 if __name__ == '__main__':
