@@ -74,7 +74,7 @@ The interpreter works as follows:
 	(hbnb)
 	$
 	```
-The current version of the program implements ``create``, ``show``, ``all`,
+The current version of the program implements ``create``, ``show``, ``all``,
 ``update`` and ``destroy`` commands. Help for each command is documented and
 can be accessed in the console as shown in the examples.
 
