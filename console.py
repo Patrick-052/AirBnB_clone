@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Define class 'HBNBCommand' """
+"""Defines class 'HBNBCommand' """
 
 import cmd
 import models
@@ -14,27 +14,36 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-    """creates console with the following commands"""
+    """Defines a command-line interpreter based on ``cmd.Cmd`` """
 
     prompt = "(hbnb) "
     __class_list = ['BaseModel', 'Amenity', 'City',
                     'Place', 'Review', 'State', 'User']
 
-    def emptyline(self):
-        """executes no command"""
-        pass
-
     def do_EOF(self, line=''):
-        """Exit program"""
+        """
+        Send ``EOF`` signal, exiting the console
+        """
         print()
         return True
 
     def do_quit(self, line=''):
-        """Quit program"""
+        """
+        Quit program
+
+        Usage: quit
+        """
         return self.do_EOF()
 
     def do_create(self, line=''):
-        """Create and save a new class instance """
+        """
+        Create and save a new class instance
+
+        Usage: create <class name>
+
+        Ex:
+        (hbnb) create BaseModel
+        """
         arg = line.split()
         if len(arg) == 0:
             print("** class name missing **")
@@ -52,9 +61,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        Prints the string rep. of an instance based on the class name & id.
+        Print a description of an instance based on the class name
+
         Usage: show <class name> <id>
-        Ex: $ show BaseModel 1234-1234-1234.
+
+        Ex:
+        (hbnb) show BaseModel 1234-1234-1234
         """
         args = line.split()
         obj_dict = models.storage.all()
@@ -75,8 +87,14 @@ class HBNBCommand(cmd.Cmd):
                 print(obj)
 
     def do_destroy(self, line=''):
-        """Deletes an instance based on the class name
-        and id (save the change into the JSON file)"""
+        """
+        Delete an instance based on the class name and id
+
+        Usage: destroy <class name> <id>
+
+        Ex:
+        (hbnb) destroy BaseModel 1234-1234-1234
+        """
 
         args = line.split()
         if len(args) == 0:
@@ -99,8 +117,16 @@ class HBNBCommand(cmd.Cmd):
                     print(e)
 
     def do_all(self, line=''):
-        """Prints all string representation of all instances
-        based or not on the class name"""
+        """
+        Print decriptions of all objects of all classes or a specific class
+        if the second argument is supplied
+
+        Usage: all [<class name>]
+
+        Ex:
+        (hbnb) all
+        (hbnb) all BaseModel
+        """
 
         args = line.split()
         all_list = []
@@ -118,9 +144,14 @@ class HBNBCommand(cmd.Cmd):
         print(all_list)
 
     def do_update(self, line=''):
-        """Updates an instance based on the class name
-        and id by adding or updating attribute
-        (save the change into the JSON file)"""
+        """
+        Update an object based on the class name and id
+
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+
+        Ex:
+        (hbnb) update BaseModel 1234-1234-1234 email "airbnb@mail.com"
+        """
         args = line.split()
         obj_dict = models.storage.all()
         if len(args) == 0:
