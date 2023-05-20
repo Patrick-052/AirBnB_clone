@@ -20,10 +20,12 @@ class HBNBCommand(cmd.Cmd):
     __class_list = ['BaseModel', 'Amenity', 'City',
                     'Place', 'Review', 'State', 'User']
 
+    def emptyline(self, line=''):
+        """Ignore empty lines """
+        pass
+
     def do_EOF(self, line=''):
-        """
-        Send ``EOF`` signal, exiting the console
-        """
+        """Send ``EOF`` signal, exiting the console """
         print()
         return True
 
